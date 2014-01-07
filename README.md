@@ -61,7 +61,7 @@ And finally component lookup. First we will need some context objects:
     >>> from akuna.component import query_component 
     
 
-Find most applicable component providing DetailView type in *mountain_bike, request* context:
+Use **query_component** (or **get_component**) to find most applicable component providing *DetailView* type for *mountain_bike, request* context:
 
     >>> query_component('DetailView', context=(mountain_bike, request))
     <class '__main__.MountainBikeView'>
@@ -115,7 +115,7 @@ More specific search by *component name*:
     [{'component': <__main__.GenericFactory object at ...>, 'name': ''}, {'component': <function mountainbike_factory ...>, 'name': 'mountainbike'}]
 
 
-If component not found, query_component will return None. get_component could be used in exactly the same way as query_component but error will be thrown if component not found:
+If component not found, query_component will return None. **get_component** could be used in exactly the same way as query_component but error will be thrown if component not found:
 
     >>> from akuna.component import get_component
     >>> get_component('Factory', name='blah')       #doctest: +ELLIPSIS
