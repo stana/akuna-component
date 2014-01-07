@@ -43,7 +43,7 @@ A dummy request:
     ...
 
 
-Now component registration:
+Now **component registration**:
 
     >>> from akuna.component import register_component
     ...
