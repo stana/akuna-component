@@ -1,9 +1,9 @@
 Akuna Component
 ===============
 
-Simple component based development lib prototype for python allowing for a very decoupled design between client code using the components and components. 
+Simple component based development lib prototype for python allowing for a very decoupled design between client code using components and components. 
 
-Components could be registered by **type** they provide, **context** in which they operate and **name**. They could then be searched by these same parameteres. 
+Components could be registered by **type** they provide, **context** in which they operate and **name**. They could then be searched by these same parameters.
 
 For example, a few content types:
 
@@ -61,19 +61,19 @@ And finally component lookup. First we will need some context objects:
     >>> from akuna.component import query_component 
     
 
-Find most applicable component providing DetailView type in *mountain_bike, request* context.
+Find most applicable component providing DetailView type in *mountain_bike, request* context:
 
     >>> query_component('DetailView', context=(mountain_bike, request))
     <class '__main__.MountainBikeView'>
 
 
-Similar query but for *road_bike, request* context. NOTE the Generic View component being returned (registered for generic *Bike* type) as we don't have a specific *RoadBike* view component.
+Similar query but for *road_bike, request* context. Note the Generic View component being returned (registered for generic *Bike* type) as we don't have a specific *RoadBike* view component:
 
     >>> query_component('DetailView', context=(road_bike, request))
     <class '__main__.GenericBikeView'>
 
 
-Components could also be registered using a component name, and without context.
+Components could also be registered using a component name, and without context:
 
     >>> class GenericFactory(object): pass
     ... 
@@ -90,7 +90,7 @@ Or functions:
     ...     pass
 
 
-Could also 'cheat' and provide *is_a* string argument when registering so component classes don't have to extend some generic class.  This is also useful when registering functions as components.  Usually we would search components by this *is_a* type (eg. *DetailView*, *Factory*).
+Could also 'cheat' and provide *is_a* string argument when registering so component classes don't have to extend some generic class.  This is also useful when registering functions as components.  Usually we would search components by this *is_a* type (eg. *DetailView*, *Factory*):
 
     >>> register_component(generic_factory,      is_a='Factory')
     >>> register_component(mountainbike_factory, is_a='Factory', name='mountainbike')
@@ -108,7 +108,7 @@ More specific search by *component name*:
     <function mountainbike_factory ...>
 
 
-filter_components returns a list of component, name dictionaries: 
+**filter_components** will return all components matching filter criteria as a list of *component, name* dictionaries: 
 
     >>> from akuna.component import filter_components
     >>> filter_components('Factory')    #doctest: +ELLIPSIS
